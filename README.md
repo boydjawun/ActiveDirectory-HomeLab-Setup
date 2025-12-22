@@ -1,22 +1,17 @@
 # Active Directory Home Lab Setup(System Administration)
-
-Remember to change the names of the new VM’s to not confuse them with the freecodecamp VM’s
-
-Creating an Active Directory lab on VMWare
-
+This diagram shows an overview of the setup of the Home Lab. [Describe the picture and what everything is]
 ![image.png](images/image.png)
 
 # Description
-
+[Add a brief Description]
 - Basic Windows network environment with Active Directory and a few network services
 
 # Objectives
-
+[Add more to Objectives, if needed. Creating the 2 VM's are the objectves list already]
 - Download and install VMWare
 - Download Windows 11 ISO and Windows Server 2022 ISO, to install the two operating systems on two seprate virtual machines
 
 ### Create the First Virtual Machine
-
 - The domain controller, which is going to host Active Directory
 - Two network adapters
     - one connects to the outside internet
