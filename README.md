@@ -5,7 +5,8 @@ This diagram shows an overview of the setup of the Home Lab including:
 ![image.png](images/image.png)
 
 # Description
-This project showcases knowlege of system architecture, domain management, and proficiency in constructing and managing complex network environments by configuring Microsoft Server 2022 to host Active Directory and deploying a Domain Controller. Also using a PowerShell script to create add users to the Active Directory demonstrates the ability to streamline administrative tasks efficiently. After deploying the Domain Controller, I create the Windows 11 Pro Virtual Machine and join it to the Domain Controller. The client is then joined to the Domain Controller and logged into using one of the created users from the PowerShell script
+This GitHub repository demonstrates my expertise in system architecture, domain management, and building/managing complex network environments through a hands-on Active Directory (AD) home lab setup using Oracle VirtualBox. The project involves configuring Microsoft Windows Server 2022 to host Active Directory Domain Services (AD DS) and deploying a Domain Controller (DC). A PowerShell script is utilized to automate the creation and addition of 1,000 users to AD, highlighting efficient administrative task automation.
+Following DC deployment, a Windows 11 Pro virtual machine is created as a client, configured with appropriate network settings, and joined to the domain. The setup culminates in logging into the client VM using one of the script-generated domain user accounts, simulating a basic corporate network environment.This project serves as a practical showcase for networking, virtualization, and AD administration skills
 
 # Objectives
 - Download and install VMWare
