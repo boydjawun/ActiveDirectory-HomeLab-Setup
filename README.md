@@ -1,13 +1,13 @@
 # Active Directory Home Lab Setup(System Administration)
-This diagram shows an overview of the setup of the Home Lab. [Describe the picture and what everything is]
+This diagram shows an overview of the setup of the Home Lab including:
+- The Domain Controller with two adapters, one for the outside internet and one for a private network for the clients to log on to. The Domain Controller will also have RAS/NAT set up for clients to access the internet through the Domain Controller. Lastly DHCP is set up to provide IP Addressing to clients accessing the internet
+- Windows 11 client, with an adapter connected to the Domain Controller's private network
 ![image.png](images/image.png)
 
 # Description
-[Add a brief Description]
-- Basic Windows network environment with Active Directory and a few network services
+This project showcases knowlege of system architecture, domain management, and proficiency in constructing and managing complex network environments by configuring Microsoft Server 2022 to host Active Directory and deploying a Domain Controller. Also using a PowerShell script to create add users to the Active Directory demonstrates the ability to streamline administrative tasks efficiently. After deploying the Domain Controller, I create the Windows 11 Pro Virtual Machine and join it to the Domain Controller. The client is then joined to the Domain Controller and logged into using one of the created users from the PowerShell script
 
 # Objectives
-[Add more to Objectives, if needed. Creating the 2 VM's are the objectves list already]
 - Download and install VMWare
 - Download Windows 11 ISO and Windows Server 2022 ISO, to install the two operating systems on two seprate virtual machines
 
@@ -19,7 +19,7 @@ This diagram shows an overview of the setup of the Home Lab. [Describe the pictu
 - Install Server 2022 and assign IP addressing for the internal network, name the server, install Active Directory and create the Domain
 - Configure NAT and routing so the clients on the private network can reach the internet through the domain controller
 - Setup DHCP on Domain Controller so when Windows 11 Virtual machine is created, it can automatially get an IP address
-- Run Powershell script to create 1000 users in the in the Active Directory automatically
+- Run Powershell script to create 1000+ users in the in the Active Directory automatically
 
 ### Create the Second Virtual Machine
 
@@ -54,7 +54,7 @@ This diagram shows an overview of the setup of the Home Lab. [Describe the pictu
 
 ![image.png](images/image%202.png)
 
-- Leave the Disk Capacity as it is , 60.0 GB and click Next >, then click finish
+- Leave the Disk Capacity as it is, 60.0 GB and click Next >, then click finish
 - My Virtual Machine only has one adapter, two is needed for the outside internet connetion and private internet connection for the clients
 - To add another adapter, click “Edit virtual machine settings”
 
@@ -70,7 +70,7 @@ This diagram shows an overview of the setup of the Home Lab. [Describe the pictu
 
 - Click “Power on this virtual machine”
 - I used Windows Server 2022 Standard Evaluation (Desktop Experience)
-- Select “Custom: Install Microsoft Server Operating System only (advanced)
+- Select “Custom: Install Microsoft Server Operating System only (advanced)"
     - Click “New” , then “Apply”, then click Ok
     - After partitioning the drive, click Next
 
@@ -78,7 +78,7 @@ This diagram shows an overview of the setup of the Home Lab. [Describe the pictu
 
 ![image.png](images/image%206.png)
 
-- After partitioning the drive, allows the machine to restart and set Administrator Password
+- After partitioning the drive, allow the machine to restart and set Administrator Password
 - Log in with Administrator password
 - Install VMware tools VM > Install VMware tools
     - Click Run setup.exe
@@ -105,7 +105,7 @@ This diagram shows an overview of the setup of the Home Lab. [Describe the pictu
 
 ### Give IP Address to X_internal_X Adapter
 
-- View the properties of the X_internal_X adapter, then click “Internal Protocol Version 4 (TCP/IPv4)
+- View the properties of the X_internal_X adapter, then click “Internal Protocol Version 4 (TCP/IPv4)"
 
 ![image.png](images/image%209.png)
 
@@ -220,7 +220,7 @@ This diagram shows an overview of the setup of the Home Lab. [Describe the pictu
 ![image.png](images/image%2032.png)
 
 - Click Next > once the Setup Wizard pops up
-- Select “Network address translation(NAT) to allow clients to the internet. Click Next >
+- Select “Network address translation(NAT)" to allow clients to the internet. Click Next >
 
 ![image.png](images/image%2033.png)
 
@@ -432,7 +432,7 @@ Creating the second Virtual Machine for Windows 11
 
 ![image.png](images/image%2079.png)
 
-### Logging In as another user account
+### Logging in as another user account
 
 I am now logging in as another user account established within mydomain.local from running the PowerShell to check for proper configuration 
 
@@ -452,6 +452,6 @@ I am now logging in as another user account established within mydomain.local fr
 
 ![image.png](images/image%2083.png)
 
-- Running Whoami in the terminal, I can see that I am the user acstleberry and this user is a member of mydomain
+- Running Whoami in the terminal, I can see that I am the user acastleberry and this user is a member of mydomain
 
 ![image.png](images/image%2084.png)
