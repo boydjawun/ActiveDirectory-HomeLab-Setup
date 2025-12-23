@@ -301,7 +301,7 @@ Allows Windows 11 Clients to automatically get an IP address that will let them 
 
 ![image.png](images/image%2050.png)
 
-- Next, download the PowerShell script with this link on the Domain Controller Virtual Machine by pasting this link in the Domain Controller web browser: [https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1](https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1) and downloading the zip file, then extract the files
+- Next, download the PowerShell script with this link on the Domain Controller Virtual Machine by pasting this link in the Domain Controller web browser: [https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1](https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1) and downloading the zip file, then extract the files. I included the folder(AD_PS-master) equipped with the Powershell script and list of names in the names.txt file above
 
 ![image.png](images/image%2051.png)
 
