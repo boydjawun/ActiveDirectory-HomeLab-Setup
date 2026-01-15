@@ -456,3 +456,153 @@ I am now logging in as another user account established within mydomain.local fr
 - Running Whoami in the terminal, I can see that I am the user acastleberry and this user is a member of mydomain
 
 ![image.png](images/image%2084.png)
+# Organizational Units and Group Policies
+
+# Organizational Units
+
+>Organizational Units are used to define sets of users with similar policing requirements
+
+In this scenerio I have a tech company, MyDomain, inc.  and different departments need to have different rules and restrictions. This will be done using Organizational Units, container objects that let you classify users and machines
+
+# Creating Organizational Units
+
+Now I create each individual Organizational Unit for the Management, Marketing, Sales, and IT departments for MyDomain, inc
+
+- In the server manager on the Windows Server 2022 Virtual Machine click tools > Active Directory Users and Computers
+- Right click mydomain.local > New > Organizational Unit
+
+![image.png](attachment:a5ce0c64-4d5d-41e8-ab7d-c6d67886ff91:image.png)
+
+- Name the Organizational Unit
+
+![image.png](attachment:09a78727-16c5-4ac8-bee2-128343751945:image.png)
+
+- I see that the Organizational Unit is added to mydomain.local
+
+![image.png](attachment:7a19fae3-cc27-44f3-af9c-5eb17c206997:image.png)
+
+- Now create the other Organizational units for IT, Sales, and Marketing
+
+![image.png](attachment:b918a18e-acdd-4bd1-895b-f235f1533dfd:image.png)
+
+### Adding Users to Each Organizational Group
+
+I am adding users to each organizational group and delegating privileges
+
+- Click _USERS, select a user to move. Right click the User and select “Move…”
+
+![image.png](attachment:746eea79-910b-4637-aaa7-d634ba0a9560:image.png)
+
+- Click the Management Organizational Unit and click Ok. Here, I put user acastleberry in the Management Organizational Unit. Next, I fill the other organizational units with 3-4 users for each department
+
+![image.png](attachment:1daed8c7-d767-4353-969d-30fc2e2bb093:image.png)
+
+# Delegate Control over OU
+
+**>Delegation** allows you to grant users specific privileges to perform advanced tasks on OUs without needing a Domain Administrator
+
+Now that I have the Organizatonal Units created, I want to delegate the control of resetting user passwords for every department to users in the IT Department
+
+- Right click the “Management” Organizational Unit > Delegate Control
+
+![image.png](attachment:a946e843-ab31-46ff-9515-3dfaf2546d6d:image.png)
+
+- Click Next > when the Delegation of Control Wizard pops up, then click add to add the users of the IT Organizational Units
+
+![image.png](attachment:aeb75364-ad8a-46c7-aaea-1d3c48c67767:image.png)
+
+- I added a user’s name and clicked “Check Names” to verify the user, then click space and typed the other names with the same procedure and click Ok
+
+![image.png](attachment:f1fc2260-b134-4b9d-a697-08929a032284:image.png)
+
+- The list of users are shown that have been selected from the IT department. Click Next >
+
+![image.png](attachment:5bcd1401-edd6-49ec-a15b-680412babe91:image.png)
+
+- Select “Reset user passwords and force password change at next logon”
+
+![image.png](attachment:a28ba970-f921-4d38-995d-be7226d0ca6f:image.png)
+
+- Click Next > then click Finish
+
+![image.png](attachment:f7695d9c-1293-41c1-8b62-5c896fe862b5:image.png)
+
+### Verifying the Delegation
+
+I log in as cdally, from the IT Organizational Group, on CLIENT 1 and reset the password for Beverley(btagg) from the Marketing Group. To be able to interact with the Active Directory from CLIENT1, I had to download RSAT:Active Directory Domain Services and Lightweight Directory Service Tools
+
+>I had to be logged in as a local administrator for this computer to download RSAT. I logged in with my administrator account, downloaded it, and logged back in as cdally
+
+- Settings > Apps > “optional features” in the search bar
+
+![image.png](attachment:21d8272d-eb61-416f-a5e6-86ebdb863a37:image.png)
+
+- Click “View Features” > “See available features”
+- Type RSAT in the search bar, look for RSAT: Active Directory Domain Services and Lightweight Directory Services Tools
+
+![image.png](attachment:d79a58f1-d300-4469-b88a-f526a68eca69:image.png)
+
+- After downloading, I can type Active Directory in the search bar and it appears on my CLIENT1 machine
+
+![image.png](attachment:0ff07553-09df-43a2-a7f1-bae18fb0c367:image.png)
+
+- Next, I open PowerShell and enter a command to force a new password reset for Beverley(btagg) at her next logon
+
+>Make sure that the account used has Password never expires unchecked in the user account properties in Active Directory. Tools > Active Directory Users and Computers > Double Click User > Account Tab
+
+- The next time Beverley logs in, she will be forced to reset her password
+
+![image.png](attachment:c9ffffbf-9806-4a7f-bab6-078a7704672c:image.png)
+
+- I try to reset the password of a user that is not in an Organizational Unit that Carmelo(cdally) has delegation of and failed due to access denial, which shows the delegation process is working fine
+
+![image.png](attachment:f5e96707-6231-497e-9c0e-60c5faf68d20:image.png)
+
+- Carmelo also does not have access to move users to other Organizational Groups. Search: Active Directory Users and Computers > Click an OU > Right-Click a User > Move…
+- As seen, Carmelo cannot move user btagg becasue he only has delegated permissions to change and reset her password
+
+![image.png](attachment:3406329b-5a07-4f79-bc00-b9c6839131fb:image.png)
+
+- I log out of Carmello’s account and to access Beverley’s I am prompted to enter a new password to enter, further verifying that the delegation for cdally works fine
+
+![image.png](attachment:78057cc9-6bae-42d2-b47f-74f945e1eb22:image.png)
+
+# Group Policy Objects
+
+Group Policy Objects(GPOs) are how Windows manages policies for different Organizational Units. Here, I’m going to create a Group Policy Object that blocks all non-IT Organizational Unit members from accessing the control panel on their machines
+
+### Creating the Group Policy
+
+- Go to Windows Server 2022 Virtual Machine > Search “Group Policy Management”
+
+![image.png](attachment:7aee7699-637f-42de-b0a6-75e786a6405e:image.png)
+
+- Navigate to the “Group Policy objects” folder in mydomain.local and Right-Click > New > Enter a name for the Group Policy. I chose “Restrict Control Panel Access” and click OK
+
+![image.png](attachment:704a4098-c787-42f6-98d6-fc655dd01a9f:image.png)
+
+### Editing the Group Policy
+
+- Right Click the GPO that was just created > Edit > User Configuration > Policies > Administrative Templates > Control Panel
+
+![image.png](attachment:31cc762e-31d7-4c0c-9af1-355b1e342b62:image.png)
+
+- Double-click “Prohibit access to Control Panel and PC settings” to enable it
+
+![image.png](attachment:ae5b28f8-9ac2-42b8-9f58-f5dfb464d084:image.png)
+
+- Click “Apply” then OK. The restriction is shown here as “Enabled”
+
+![image.png](attachment:37792cc1-f207-40f6-aa4b-e54fc71daf5e:image.png)
+
+- Exit from the Group Policy Management Editor and go back to the Group Policy Objects folder. Copy the “Restrict Control Panel Access” GPO to the Marketing, Sales, and Management Organizational Units to enforce the rules to the group members
+
+![image.png](attachment:56c6950d-db80-4ffc-83d0-1b8cd8fe3a16:image.png)
+
+### Verifying Group Policy Object
+
+Now I will log in as Beverley(btagg), a member of the Marketing Organizational Unit, and try to access the control panel on CLIENT1
+
+![image.png](attachment:5ebfbb4c-343a-4d50-b27d-d5ce14263f03:image.png)
+
+- I received a restriction pop up that prevents Beverley from accessing the control panel due to the Group Policy Control Panel restrictions
