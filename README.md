@@ -33,6 +33,11 @@ This project demonstrates my expertise in system architecture, domain management
 - Name the machine “Client 1” and join it to the Domain
 - Then log into it w/ one of the created domain accounts
 
+**Group Policy Objects & Organizational Units(OUs)
+- Create Organizational Units for mydomain.local
+- Delegate password resetting privileges of an Organizational Unit
+- Create and administer group policies to Organizational Unitd
+
 # **Prerequisites + Tools**
 
 - Install VMWare(https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion)
