@@ -136,8 +136,6 @@ This project demonstrates my expertise in system architecture, domain management
 
 ### Give IP Address to X_internal_X Adapter
 
-[Place video of procedure here for github. Exclude the description if video can upload]
-
 - View the properties of the X_internal_X adapter, then clcik “Internal Protocol Version 4 (TCP/IPv4)
 
 ![image.png](images/image%209.png)
