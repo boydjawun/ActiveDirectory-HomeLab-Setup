@@ -33,7 +33,7 @@ This project demonstrates my expertise in system architecture, domain management
 - Name the machine “Client 1” and join it to the Domain
 - Then log into it w/ one of the created domain accounts
 
-**Group Policy Objects & Organizational Units(OUs)
+**Group Policy Objects & Organizational Units(OUs)**
 - Create Organizational Units for mydomain.local
 - Delegate password resetting privileges of an Organizational Unit
 - Create and administer group policies to Organizational Unitd
@@ -63,15 +63,6 @@ This project demonstrates my expertise in system architecture, domain management
 - Connect Windows 11 Virtual Machine to private Domain Controller’s network
 - Name the machine “Client 1” and join it to the Domain
 - Then log into it w/ one of the created domain accounts
-
-# Prerequisites + Tools
-
-- Install VMWare([https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion))
-- Install Windows 11 ISO([https://www.microsoft.com/en-us/software-download/windows11](https://www.microsoft.com/en-us/software-download/windows11))
-- Install Windows Server 2022([https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022))
-- Powershell
-- Active Directory
-- CMD
 
 # Virtual Machine 1(Windows Server 2022)
 
