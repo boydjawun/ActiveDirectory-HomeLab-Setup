@@ -1,5 +1,5 @@
 # Active Directory Home Lab Setup(System Administration)
-This >diagram shows an overview of the setup of the Home Lab including:
+This diagram shows an overview of the setup of the Home Lab including:
 
 - The Domain Controller with two adapters, one for the outside internet and one for a private network for the clients to connect to. The Domain Controller will also have RAS/NAT set up for clients to access the internet through the Domain Controller. Lastly DHCP is set up to provide IP Addressing to clients accessing the internet
 - Windows 11 client, with an adapter connected to the Domain Controller's private network
