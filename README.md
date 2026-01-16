@@ -367,7 +367,7 @@ Allows Windows 11 Clients to automatically get an IP address that will let them 
 
 ![image.png](images/image%2060.png)
 
-# Virtual Machine 2(Windows 11)
+# Virtual Machine 2(Windows 11 Pro)
 
 Creating the second Virtual Machine for Windows 11
 
