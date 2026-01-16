@@ -46,6 +46,8 @@ This project demonstrates my expertise in system architecture, domain management
 - Powershell
 - Active Directory
 - CMD
+- RSAT: Active Directory Domain Services and Lightweight Directory Services Tools
+
 ### Create the First Virtual Machine
 
 - The domain controller, which is going to host Active Directory
