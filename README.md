@@ -1,11 +1,14 @@
 # Active Directory Home Lab Setup(System Administration)
+This diagram shows an overview of the setup of the Home Lab including:
 
+- The Domain Controller with two adapters, one for the outside internet and one for a private network for the clients to connect to. The Domain Controller will also have RAS/NAT set up for clients to access the internet through the Domain Controller. Lastly DHCP is set up to provide IP Addressing to clients accessing the internet
+- Windows 11 client, with an adapter connected to the Domain Controller's private network
 
 ![image.png](images/image.png)
 
 # **Description**
 
-This GitHub repository demonstrates my expertise in system architecture, domain management, and building/managing complex network environments through a hands-on Active Directory (AD) home lab setup using VMware virtualization software. The project involves configuring Microsoft Windows Server 2022 to host Active Directory Domain Services (AD DS) and deploying a Domain Controller (DC). A PowerShell script is utilized to automate the creation and addition of 1,000 users to AD, highlighting efficient administrative task automation. Following DC deployment, a Windows 11 Pro virtual machine is created as a client, configured with appropriate network settings, and joined to the domain. The setup culminates in logging into the client VM using one of the script-generated domain user accounts, simulating a basic corporate network environment.This project serves as a practical showcase for networking, virtualization, and AD administration skills.
+This project demonstrates my expertise in system architecture, domain management, and building/managing complex network environments through a hands-on Active Directory (AD) home lab setup using VMware virtualization software. The project involves configuring Microsoft Windows Server 2022 to host Active Directory Domain Services (AD DS) and deploying a Domain Controller (DC). A PowerShell script is utilized to automate the creation and addition of 1,000 users to AD, highlighting efficient administrative task automation. Following DC deployment, a Windows 11 Pro virtual machine is created as CLIENT1, configured with appropriate network settings, and joined to the domain. The setup culminates in logging into the client VM using one of the script-generated domain user accounts, simulating a basic corporate network environment.This project serves as a practical showcase for networking, virtualization, and AD administration skills.
 
 # **Objectives**
 
