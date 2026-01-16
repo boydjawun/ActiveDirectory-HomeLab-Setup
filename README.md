@@ -1,6 +1,5 @@
 # Active Directory Home Lab Setup(System Administration)
 
-Get some notes from AD Github porfoleyo guy for github repo
 
 ![image.png](images/image.png)
 
@@ -239,7 +238,7 @@ This GitHub repository demonstrates my expertise in system architecture, domain 
 
 - Click Next > until the “Role Services” section. Select “Routing” from the list of services, then click Add Freatures
 
-![image.png](images/images/image%2030.png)
+![image.png](images/image%2030.png)
 
 - I clicked Next > until it got to the Confirmation section and clicked Install. Wait on the installation, then click Close
 - On the Server Manager click Tools> Routing and Remote Access
