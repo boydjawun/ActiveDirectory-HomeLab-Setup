@@ -1,42 +1,42 @@
-# Active Directory Home Lab Setup(System Administration)
-This diagram shows an overview of the setup of the Home Lab including:
+# 🔬 Active Directory Home Lab Setup(System Administration)
+This diagram shows an overview of the setup of the home lab:
 
-- The Domain Controller with two adapters, one for the outside internet and one for a private network for the clients to connect to. The Domain Controller will also have RAS/NAT set up for clients to access the internet through the Domain Controller. Lastly DHCP is set up to provide IP Addressing to clients accessing the internet
+- The Domain Controller with two adapters, one for the outside internet and one for a private network for the clients to connect to. The Domain Controller will also have RAS/NAT set up for clients to access the internet through the Domain Controller. Also, DHCP is set up to provide IP Addressing to clients accessing the internet
 - Windows 11 client, with an adapter connected to the Domain Controller's private network
 
 ![image.png](images/image.png)
 
 # **Description**
 
-This project demonstrates my expertise in system architecture, domain management, and building/managing complex network environments through a hands-on Active Directory (AD) home lab setup using VMware virtualization software.The project involves configuring Microsoft Windows Server 2022 to host Active Directory Domain Services (AD DS) and deploying a Domain Controller (DC). A PowerShell script is utilized to automate the creation and addition of 1,000 users to AD, highlighting efficient administrative task automation. Following DC deployment, a Windows 11 Pro virtual machine is created as CLIENT1, configured with appropriate network settings, and joined to the domain. The next step is logging into the client VM using one of the script-generated domain user accounts, simulating a basic corporate network environment. The setup culminates as CLIENT1 is logged into using a created user to administer group policies and enforce delegation privileges for organizational units created in Active Directory. This project serves as a practical showcase for networking, virtualization, and AD administration skills.
+This project demonstrates my expertise in system architecture, domain management, and building/managing complex network environments through a hands-on Active Directory (AD) Home Lab setup using VMware Virtualization Software.The follwing procedure involves configuring Microsoft Windows Server 2022 to host Active Directory Domain Services (AD DS) and deploying a Domain Controller (DC). A PowerShell script is utilized to automate the creation and addition of 1,000 users to AD, highlighting efficient administrative task automation. Following DC deployment, a Windows 11 Pro Virtual Machine is created as CLIENT1, configured with appropriate network settings, and joined to the domain. The next step is logging into CLIENT1 using one of the script-generated domain user accounts, simulating a basic corporate network environment. The setup culminates as CLIENT1 is logged into using a created user to administer group policies and enforce delegation privileges for organizational units created in Active Directory. This project serves as a practical showcase for networking and AD administration skills.
 
 # **Objectives**
 
 - Download and install VMWare
-- Download Windows 11 ISO and Windows Server 2022 ISO, to install the two operating systems on two seprate virtual machines
+- Download Windows 11 ISO and Windows Server 2022 ISO to install the two operating systems on two seprate virtual machines
 
 **Create the First Virtual Machine**
 
-- The domain controller, which is going to host Active Directory
+- The Domain Controller(DC), which is going to host Active Directory
 - Two network adapters
     - one connects to the outside internet
-    - The other used to connect to the virtual machine’s private network that the clients are going to connect to
+    - The other used to connect to the DC's private network that CLIENT1 is going to connect to
 - Install Server 2022 and assign IP addressing for the internal network, name the server, install Active Directory and create the Domain
-- Configure NAT and routing so the clients on the private network can reach the internet through the domain controller
-- Setup DHCP on Domain Controller so when Windows 11 Virtual machine is created, it can automatially get an IP address
+- Configure NAT and routing so the clients on the private network can reach the internet through the DC
+- Setup DHCP on DC so when CLIENT1's Virtual Machine is created and added to the network, it can automatially get an IP address
 - Run Powershell script to create 1000+ users in the in the Active Directory automatically
 
 **Create the Second Virtual Machine**
 
-- Install Windows 11
-- Connect Windows 11 Virtual Machine to private Domain Controller’s network
-- Name the machine “Client 1” and join it to the Domain
-- Then log into it w/ one of the created domain accounts
+- Install Windows 11 ISO
+- Connect Windows 11 Virtual Machine to private DC’s network
+- Name the machine “CLIENT1” and join it to the domain
+- Then log into CLIENT1 w/ a created domain account
 
 **Group Policy Objects & Organizational Units(OUs)**
 - Create Organizational Units for mydomain.local
-- Delegate password resetting privileges of an Organizational Unit
-- Create and administer group policies to Organizational Unitd
+- Delegate password resetting privileges of the created Organizational Units to a user
+- Create and administer group policies to Organizational Unit and verifying that the policy works correctly
 
 # **Prerequisites + Tools**
 
@@ -47,24 +47,6 @@ This project demonstrates my expertise in system architecture, domain management
 - Active Directory
 - CMD
 - RSAT: Active Directory Domain Services and Lightweight Directory Services Tools
-
-### Create the First Virtual Machine
-
-- The domain controller, which is going to host Active Directory
-- Two network adapters
-    - one connects to the outside internet
-    - The other used to connect to the virtual machine’s private network that the clients are going to connect to
-- Install Server 2022 and assign IP addressing for the internal network, name the server, install Active Directory and create the Domain
-- Configure NAT and routing so the clients on the private network can reach the internet through the domain controller
-- Setup DHCP on Domain Controller so when Windows 11 Virtual machine is created, it can automatially get an IP address
-- Run Powershell script to create 1000 users in the in the Active Directory automatically
-
-### Create the Second Virtual Machine
-
-- Install Windows 11
-- Connect Windows 11 Virtual Machine to private Domain Controller’s network
-- Name the machine “Client 1” and join it to the Domain
-- Then log into it w/ one of the created domain accounts
 
 # Virtual Machine 1(Windows Server 2022)
 
@@ -77,29 +59,31 @@ This project demonstrates my expertise in system architecture, domain management
 
 ![image.png](images/image%201.png)
 
-- Did not use a Windows Product Key becasue this is just a demonstrative lab project
-- Click Next > as password is optional and click yes at the Window Product Key pop up
 - Change the Virtual Machine’s name to “DC”
 
 ![image.png](images/image%202.png)
 
 - Leave the Disk Capacity as it is , 60.0 GB and click Next >, then click finish
 - My Virtual Machine only has one adapter, two is needed for the outside internet connetion and private internet connection for the clients
-- To add another adapter, click “Edit virtual machine settings”
+- To add another adapter, click "Edit virtual machine settings"
 
 ![image.png](images/image%203.png)
 
 - Click “Add…”, then select Network Adapter and click Finish
-- Select NAT for the first Network Adapter and VMnet0 for the second Network Adapter, **then click Ok
+- Select NAT for the first Network Adapter and VMnet0 for the second Network Adapter, then click Ok
 - I also removed the Floppy disk drive
 
+### NAT Adapter Selected
+
 ![image.png](images/882dbc30-12eb-4b09-b97f-665bafd12b8f.png)
+
+### VMnet0 Adapter Selected
 
 ![image.png](images/image%204.png)
 
 - Click “Power on this virtual machine”
 - I used Windows Server 2022 Standard Evaluation (Desktop Experience)
-- Select “Custom: Install Microsoft Server Operating System only (advanced)
+- Select “Custom: Install Microsoft Server Operating System only (advanced)"
     - Click “New” , then “Apply”, then click Ok
     - After partitioning the drive, click Next
 
@@ -107,11 +91,9 @@ This project demonstrates my expertise in system architecture, domain management
 
 ![image.png](images/image%206.png)
 
-- After partitioning the drive, allows the machine to restart and set Administrator Password
+- After partitioning the drive, allows the machine to restart and set an Administrator Password
 - Log in with Administrator password
-- Install VMware tools VM > Install VMware tools
-    - Click Run setup.exe
-    - Select Complete setup type then Next >, then Install
+> May Have to install VMware tools
 
 ### Locating NAT Adapter
 
@@ -119,7 +101,7 @@ This project demonstrates my expertise in system architecture, domain management
 
 ![image.png](images/29aa130c-9fd8-420a-8c6c-0cdebf59cb4b.png)
 
-- I have to figure out which NIC serves as NAT and name them appropriately
+- I have to figure out which Network Interface Card(NIC) serves as Network Access Translator(NAT) and name the two adapters appropriately
     - Right clicking an adapter then clicking “Status”, the click “Details”. Reveals IP Addressing information
     - Ethernet0 is the NAT adapter because it’s DNS is assigned to “localdomain”
 
@@ -134,7 +116,7 @@ This project demonstrates my expertise in system architecture, domain management
 
 ### Give IP Address to X_internal_X Adapter
 
-- View the properties of the X_internal_X adapter, then clcik “Internal Protocol Version 4 (TCP/IPv4)
+- View the properties of the X_internal_X adapter, then click “Internal Protocol Version 4 (TCP/IPv4)"
 
 ![image.png](images/image%209.png)
 
