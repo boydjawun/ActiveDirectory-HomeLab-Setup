@@ -104,7 +104,7 @@ This project demonstrates my expertise in system architecture, domain management
 - I have to figure out which Network Interface Card(NIC) serves as a Network Access Translator(NAT) and name the two adapters appropriately.
     - Right-clicking an adapter, then clicking “Status”, then click “Details” revealing IP Addressing information.
     - Ethernet0 is the NAT adapter because its DNS is assigned to “localdomain”.
-    - Change Ethernet0 to _INTERNET_ and Ethernet1 to X_internal_X.
+    - Change Ethernet0 to "_INTERNET_" and Ethernet1 to "X_internal_X".
 
 ![image.png](images/image%207.png)
 
