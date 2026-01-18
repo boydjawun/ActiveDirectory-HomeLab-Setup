@@ -417,30 +417,30 @@ Creating the second Virtual Machine for Windows 11.
 
 ### Joining Windows 11 to Windows Server 2022 (Domain Controller)
 
-- Click on the Window’s Icon and search “domain” and click on “Access work or school” and click the “Connect” button
+- Click on the Window’s Icon and search “domain” and click on “Access work or school” and click the “Connect” button.
 
 ![image.png](images/image%2074.png)
 
-- Click “Join this device to a local Active Directory domain”
+- Click “Join this device to a local Active Directory domain”.
 
 ![image.png](images/image%2075.png)
 
-- Type in the name of the domain and click Next
+- Type in the name of the domain and click Next.
 
 ![image.png](images/image%2076.png)
 
-- I used my Administrator Account that I previously made as credentials to join to the domain, and for account type I chose Administrator, then I restarted my system and logged back in as user a-jboyd
+- I used my Administrator Account that I previously made as credentials to join to the domain, and for account type I chose Administrator. Then, I restarted my system and logged back in as user a-jboyd.
 
 ![image.png](images/image%2077.png)
 
-- Since I have Windows 11 Virtual Machine joined to the Domain Controller, I am able to view it in the Address Leases folder on the Domain Controller
-- In the Server Manager click Tools > DHCP > dc.mydomain.local > IPv4 > Scope > Address Leases
+- Since I have CLIENT1 joined to the Domain Controller, I am able to view it in the Address Leases folder on the Domain Controller.
+- In the Server Manager click Tools > DHCP > dc.mydomain.local > IPv4 > Scope > Address Leases.
 
 ![image.png](images/image%2078.png)
 
-- These leases are created after the DHCP server gives the client an IP Address
-- The client computer is also visible in the computers folder under “Active Directory Users and Computers”
-- In the Server Manager click Tools > Active Directory Users and Computers > mydomain.local > Computers
+- These leases are created after the DHCP server gives CLIENT1 an IP Address.
+- CLIENT1 is also visible in the computers folder under “Active Directory Users and Computers”.
+- In the Server Manager click Tools > Active Directory Users and Computers > mydomain.local > Computers.
 
 ![image.png](images/image%2079.png)
 
